@@ -1,0 +1,89 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("214f56bf-5fb1-4da3-9975-25af1fde3787",
+	'LineTracer',
+	1,
+	'LineTracer',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6f8302d4-db51-4bed-9f69-2634d84cbcd8",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787",
+	'turn_right',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'Zumo::driveTank(left: 100, right: 0);
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("bc9fcf88-d11e-460a-9370-96b041b11d60",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787",
+	'turn_left',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'Zumo::driveTank(left: 0, right: 100);
+',
+	1,
+	'',
+	"6f8302d4-db51-4bed-9f69-2634d84cbcd8",
+	0);
+INSERT INTO O_TFR
+	VALUES ("3bc2154b-13e9-4695-906b-4d340925dde9",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787",
+	'stop',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'Zumo::driveTank(left: 0, right: 0);
+',
+	1,
+	'',
+	"bc9fcf88-d11e-460a-9370-96b041b11d60",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("56fe2cb8-4f68-4cdf-8cce-27faba4e5d14",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787");
+INSERT INTO O_BATTR
+	VALUES ("56fe2cb8-4f68-4cdf-8cce-27faba4e5d14",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787");
+INSERT INTO O_ATTR
+	VALUES ("56fe2cb8-4f68-4cdf-8cce-27faba4e5d14",
+	"214f56bf-5fb1-4da3-9975-25af1fde3787",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"214f56bf-5fb1-4da3-9975-25af1fde3787");
+INSERT INTO O_ID
+	VALUES (1,
+	"214f56bf-5fb1-4da3-9975-25af1fde3787");
+INSERT INTO O_ID
+	VALUES (2,
+	"214f56bf-5fb1-4da3-9975-25af1fde3787");
+INSERT INTO PE_PE
+	VALUES ("214f56bf-5fb1-4da3-9975-25af1fde3787",
+	1,
+	"f2cb82c3-b4f8-4c4b-9679-e9164fb996b6",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f2cb82c3-b4f8-4c4b-9679-e9164fb996b6",
+	"00000000-0000-0000-0000-000000000000",
+	"18e54930-08c5-4e33-be2b-a9ecc8e9cb4d",
+	'models',
+	'',
+	0,
+	'../models.xtuml');

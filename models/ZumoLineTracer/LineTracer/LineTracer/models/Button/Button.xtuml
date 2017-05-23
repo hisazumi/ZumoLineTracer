@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("ad43da6e-cc97-4d42-a755-33e041242c3e",
+	'Button',
+	2,
+	'Button',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("17a8af14-7600-4f9a-96c2-e7cb2b75a569",
+	"ad43da6e-cc97-4d42-a755-33e041242c3e");
+INSERT INTO O_BATTR
+	VALUES ("17a8af14-7600-4f9a-96c2-e7cb2b75a569",
+	"ad43da6e-cc97-4d42-a755-33e041242c3e");
+INSERT INTO O_ATTR
+	VALUES ("17a8af14-7600-4f9a-96c2-e7cb2b75a569",
+	"ad43da6e-cc97-4d42-a755-33e041242c3e",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"ad43da6e-cc97-4d42-a755-33e041242c3e");
+INSERT INTO O_ID
+	VALUES (1,
+	"ad43da6e-cc97-4d42-a755-33e041242c3e");
+INSERT INTO O_ID
+	VALUES (2,
+	"ad43da6e-cc97-4d42-a755-33e041242c3e");
+INSERT INTO PE_PE
+	VALUES ("ad43da6e-cc97-4d42-a755-33e041242c3e",
+	1,
+	"f2cb82c3-b4f8-4c4b-9679-e9164fb996b6",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f2cb82c3-b4f8-4c4b-9679-e9164fb996b6",
+	"00000000-0000-0000-0000-000000000000",
+	"18e54930-08c5-4e33-be2b-a9ecc8e9cb4d",
+	'models',
+	'',
+	0,
+	'../models.xtuml');

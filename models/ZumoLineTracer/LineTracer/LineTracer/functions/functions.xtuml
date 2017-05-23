@@ -1,0 +1,151 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	"18e54930-08c5-4e33-be2b-a9ecc8e9cb4d",
+	'functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("fc284561-bb4d-4673-9215-3da7fedaf916",
+	112,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'ZumoLineTracer::LineTracer::LineTracer::functions');
+INSERT INTO DIM_DIA
+	VALUES ("fc284561-bb4d-4673-9215-3da7fedaf916",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("9ccf3e50-d71c-49da-af1a-ba27a3759118",
+	"00000000-0000-0000-0000-000000000000",
+	'setup',
+	'',
+	'create object instance lt of LineTracer;
+//generate LineTracer1:''init'' to lt;
+// Just Dummy...
+//create object instance button of Button;
+//generate Button2:init() to button;
+//create object instance irsensor of IRSensor;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("9ccf3e50-d71c-49da-af1a-ba27a3759118",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("83a9af15-1d05-42ff-ae56-6f2d1be66689",
+	"00000000-0000-0000-0000-000000000000",
+	'online',
+	'',
+	'select any lt from instances of LineTracer;
+generate LineTracer2:''online'' to lt;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("83a9af15-1d05-42ff-ae56-6f2d1be66689",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("23b25b29-b937-4ad3-80fb-f31f3207834a",
+	"00000000-0000-0000-0000-000000000000",
+	'offline',
+	'',
+	'select any lt from instances of LineTracer;
+generate LineTracer3:''offline'' to lt;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("23b25b29-b937-4ad3-80fb-f31f3207834a",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("e4c9870b-d51e-4f22-87b5-6ac5ba03033b",
+	"00000000-0000-0000-0000-000000000000",
+	'bumper',
+	'',
+	'select any lt from instances of LineTracer;
+generate LineTracer4:''bumper'' to lt;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("e4c9870b-d51e-4f22-87b5-6ac5ba03033b",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("17c5a4ea-2a93-4537-a180-72c6064c070e",
+	"00000000-0000-0000-0000-000000000000",
+	'pushed',
+	'',
+	'select any lt from instances of LineTracer;
+generate LineTracer5:''pushed'' to lt;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("17c5a4ea-2a93-4537-a180-72c6064c070e",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"e039c722-a6f2-4fac-9811-74774e6f167a",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("e039c722-a6f2-4fac-9811-74774e6f167a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'LineTracer',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../LineTracer.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("18e54930-08c5-4e33-be2b-a9ecc8e9cb4d",
+	'ZumoLineTracer',
+	1,
+	'../../../ZumoLineTracer.xtuml');

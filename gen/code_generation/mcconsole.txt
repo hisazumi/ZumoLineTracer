@@ -1,0 +1,13 @@
+Enabling detection of empty handles for component(s) *.
+Action statement tracing enabled for component LineTracer.
+Enabling state transition tracing for component(s) *.
+Function setup marked as initialization function.
+Analyzing model and making optimizations....
+Self event queue needed.
+Instance event queue needed.
+0 attributes read
+0 attributes written
+translating control statements
+translating other statements
+rolling up statements into action bodies
+done translating statements
