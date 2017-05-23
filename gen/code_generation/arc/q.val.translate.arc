@@ -192,7 +192,11 @@
     .assign te_val.array_spec = te_var.array_spec
     .select one te_dim related by te_var->TE_DIM[R2057]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
   .end for
 .end function
@@ -251,7 +255,11 @@
     .assign te_val.array_spec = te_attr.array_spec
     .select one te_dim related by te_attr->TE_DIM[R2055]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .// Maybe attribute value is actually derived.
     .select one o_dbattr related by o_attr->O_BATTR[R106]->O_DBATTR[R107]
@@ -265,7 +273,11 @@
         .assign te_val.array_spec = te_aba.array_spec
         .select one te_dim related by te_aba->TE_DIM[R2058]
         .if ( not_empty te_dim )
-          .relate te_val to te_dim across R2079
+          .// relate te_val to te_dim across R2079;
+          .assign te_val.te_dimID = te_dim.te_dimID
+          .// end relate
+        .else
+          .assign te_val.te_dimID = 00
         .end if
       .end if
     .end if
@@ -294,7 +306,11 @@
     .assign te_val.array_spec = te_mbr.array_spec
     .select one te_dim related by te_mbr->TE_DIM[R2059]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .assign te_val.OAL = ( root_te_val.OAL + "." ) + te_mbr.Name
     .assign te_val.buffer = ( root_te_val.buffer + "." ) + te_mbr.GeneratedName
@@ -361,7 +377,11 @@
     .assign te_val.array_spec = te_parm.array_spec
     .select one te_dim related by te_parm->TE_DIM[R2056]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
   .end for
 .end function
@@ -389,7 +409,11 @@
     .assign te_val.array_spec = te_parm.array_spec
     .select one te_dim related by te_parm->TE_DIM[R2056]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .if ( 1 == te_parm.By_Ref )
       .assign te_val.buffer = ( "(*" + te_parm.GeneratedName ) + ")"
@@ -452,7 +476,11 @@
     .assign te_val.array_spec = root_te_val.array_spec
     .select one te_dim related by root_te_val->TE_DIM[R2079]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
   .end if
 .end function
@@ -516,7 +544,11 @@
     .assign te_val.array_spec = r_te_val.array_spec
     .select one te_dim related by r_te_val->TE_DIM[R2079]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .assign te_val.OAL = ( ( "( " + l_te_val.OAL ) + ( " " + v_bin.Operator ) ) + ( ( " " + r_te_val.OAL ) + " )" )
   .end if
@@ -549,7 +581,11 @@
   .assign te_val.array_spec = te_aba.array_spec
   .select one te_dim related by te_aba->TE_DIM[R2058]
   .if ( not_empty te_dim )
-    .relate te_val to te_dim across R2079
+    .// relate te_val to te_dim across R2079;
+    .assign te_val.te_dimID = te_dim.te_dimID
+    .// end relate
+  .else
+    .assign te_val.te_dimID = 00
   .end if
   .end if
 .end function
@@ -615,7 +651,11 @@
     .assign te_val.array_spec = te_aba.array_spec
     .select one te_dim related by te_aba->TE_DIM[R2058]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .end if
   .end if
@@ -696,7 +736,11 @@
       .assign te_val.array_spec = te_aba.array_spec
       .select one te_dim related by te_aba->TE_DIM[R2058]
       .if ( not_empty te_dim )
-        .relate te_val to te_dim across R2079
+        .// relate te_val to te_dim across R2079;
+        .assign te_val.te_dimID = te_dim.te_dimID
+        .// end relate
+      .else
+        .assign te_val.te_dimID = 00
       .end if
     .end if
   .end if
@@ -750,7 +794,11 @@
     .assign te_val.array_spec = te_aba.array_spec
     .select one te_dim related by te_aba->TE_DIM[R2058]
     .if ( not_empty te_dim )
-      .relate te_val to te_dim across R2079
+      .// relate te_val to te_dim across R2079;
+      .assign te_val.te_dimID = te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
     .end if
   .end if
@@ -785,7 +833,11 @@
     .assign te_val.dimensions = root_te_val.dimensions - 1
     .select one next_te_dim related by root_te_val->TE_DIM[R2079]->TE_DIM[R2060.'succeeds']
     .if ( not_empty next_te_dim )
-      .relate te_val to next_te_dim across R2079
+      .// relate te_val to next_te_dim across R2079;
+      .assign te_val.te_dimID = next_te_dim.te_dimID
+      .// end relate
+    .else
+      .assign te_val.te_dimID = 00
     .end if
   .end if
 .end function

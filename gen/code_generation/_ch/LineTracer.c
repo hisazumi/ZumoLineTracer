@@ -10,7 +10,6 @@
 #include "ZumoLineTracer_sys_types.h"
 #include "LineTracer.h"
 #include "Zumo_bridge.h"
-#include "TIM_bridge.h"
 #include "LineTracer_classes.h"
 
 /*
@@ -91,23 +90,31 @@ LineTracer_pushed()
 void
 LineTracer_setup()
 {
-  LineTracer_Button * button;LineTracer_LineTracer * lt;
+  LineTracer_LineTracer * lt;
   /* CREATE OBJECT INSTANCE lt OF LineTracer */
   XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE lt OF LineTracer" );
   lt = (LineTracer_LineTracer *) Escher_CreateInstance( LineTracer_DOMAIN_ID, LineTracer_LineTracer_CLASS_NUMBER );
-  /* CREATE OBJECT INSTANCE button OF Button */
-  XTUML_OAL_STMT_TRACE( 1, "CREATE OBJECT INSTANCE button OF Button" );
-  button = (LineTracer_Button *) Escher_CreateInstance( LineTracer_DOMAIN_ID, LineTracer_Button_CLASS_NUMBER );
-  /* GENERATE Button2:init() TO button */
-  XTUML_OAL_STMT_TRACE( 1, "GENERATE Button2:init() TO button" );
-  { Escher_xtUMLEvent_t * e = Escher_NewxtUMLEvent( button, &LineTracer_Buttonevent2c );
+}
+
+/*
+ * Domain Function:  sw0
+ */
+void
+LineTracer_sw0()
+{
+  LineTracer_LineTracer * lt=0;
+  /* SELECT any lt FROM INSTANCES OF LineTracer */
+  XTUML_OAL_STMT_TRACE( 1, "SELECT any lt FROM INSTANCES OF LineTracer" );
+  lt = (LineTracer_LineTracer *) Escher_SetGetAny( &pG_LineTracer_LineTracer_extent.active );
+  /* GENERATE LineTracer6:cargo() TO lt */
+  XTUML_OAL_STMT_TRACE( 1, "GENERATE LineTracer6:cargo() TO lt" );
+  { Escher_xtUMLEvent_t * e = Escher_NewxtUMLEvent( lt, &LineTracer_LineTracerevent6c );
     Escher_SendEvent( e );
   }
 }
 /* xtUML class info (collections, sizes, etc.) */
 Escher_Extent_t * const LineTracer_class_info[ LineTracer_MAX_CLASS_NUMBERS ] = {
-  &pG_LineTracer_LineTracer_extent,
-  &pG_LineTracer_Button_extent
+  &pG_LineTracer_LineTracer_extent
 };
 
 /*

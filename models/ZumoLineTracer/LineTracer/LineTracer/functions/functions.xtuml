@@ -127,6 +127,24 @@ INSERT INTO PE_PE
 	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("df9ee8c0-891f-4c3c-bebf-11545864dc1a",
+	"00000000-0000-0000-0000-000000000000",
+	'sw0',
+	'',
+	'select any lt from instances of LineTracer;
+generate LineTracer6:''cargo'' to lt;
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("df9ee8c0-891f-4c3c-bebf-11545864dc1a",
+	1,
+	"b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("b2e89503-acc2-4e89-97d1-a8ee79b6bbe9",
 	1,

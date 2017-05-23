@@ -122,14 +122,7 @@
 .invoke system_class_array = DefineClassInfoArray( first_te_c )
 .invoke domain_ids = DeclareDomainIdentityEnums( first_te_c, num_ooa_doms )
 .//
-.// Get the TE_EEs that are not inside of a component.
-.select many te_ees from instances of TE_EE where ( ( selected.RegisteredName != "TIM" ) and ( selected.Included ) )
-.for each te_ee in te_ees
-  .select one my_te_c related by te_ee->TE_C[R2085]
-  .if ( not_empty my_te_c )
-    .assign te_ees = te_ees - te_ee
-  .end if
-.end for
+.select many te_ees from instances of TE_EE where ( ( ( selected.RegisteredName != "TIM" ) and ( selected.te_cID == 0 ) ) and ( selected.Included ) )
 .if ( not_empty te_ees )
   .select any te_c from instances of TE_C where ( false )
   .include "${te_file.arc_path}/q.domain.bridges.arc"

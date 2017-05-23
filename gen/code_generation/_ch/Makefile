@@ -19,8 +19,8 @@ help :
     @echo "   clean               |   "
     @echo "============================================================="
 
-include /Users/nel/Documents/zumolt/ZumoLineTracer/gen/code_generation/Makefile.in
-include /Users/nel/Documents/zumolt/ZumoLineTracer/gen/code_generation/Makefile.user
+include /Users/nel/git/ZumoLineTracer/gen/code_generation/Makefile.in
+include /Users/nel/git/ZumoLineTracer/gen/code_generation/Makefile.user
 
 # use Target C Cross Compiler
 CMD_TARGET_COMPILE    = ${CMD_COMPILE}
@@ -36,11 +36,9 @@ OBJ_PATH=
 #=============================================================================
 USER_OBJ_TARGETS = \
 	${OBJ_PATH}LineTracer.o \
-	${OBJ_PATH}LineTracer_Button_class.o \
 	${OBJ_PATH}LineTracer_LineTracer_class.o \
 	${OBJ_PATH}sys_user_co.o \
 	${OBJ_PATH}sys_xtuml.o \
-	${OBJ_PATH}TIM_bridge.o \
 	${OBJ_PATH}Zumo_bridge.o \
 	${OBJ_PATH}ZumoLineTracer_sys_main.o \
 
@@ -48,10 +46,6 @@ USER_OBJ_TARGETS = \
 # Source file target recipes.
 #=============================================================================
 ${OBJ_PATH}LineTracer.o : ${SRC_PATH}LineTracer.c
-	${CMD_TARGET_COMPILE}
-	${CMD_TARGET_ASSEMBLE}
-
-${OBJ_PATH}LineTracer_Button_class.o : ${SRC_PATH}LineTracer_Button_class.c
 	${CMD_TARGET_COMPILE}
 	${CMD_TARGET_ASSEMBLE}
 
@@ -64,10 +58,6 @@ ${OBJ_PATH}sys_user_co.o : ${SRC_PATH}sys_user_co.c
 	${CMD_TARGET_ASSEMBLE}
 
 ${OBJ_PATH}sys_xtuml.o : ${SRC_PATH}sys_xtuml.c
-	${CMD_TARGET_COMPILE}
-	${CMD_TARGET_ASSEMBLE}
-
-${OBJ_PATH}TIM_bridge.o : ${SRC_PATH}TIM_bridge.c
 	${CMD_TARGET_COMPILE}
 	${CMD_TARGET_ASSEMBLE}
 

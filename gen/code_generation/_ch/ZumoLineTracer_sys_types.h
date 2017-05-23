@@ -15,7 +15,7 @@
  * MaxSelectExtent:  0
  * MaxSelfEvents:  0
  * MaxNonSelfEvents:  0
- * MaxTimers:  2
+ * MaxTimers:  0
  * MaxInterleavedBridges:  0
  * MaxInterleavedBridgeDataSize:  8
  * CollectionsFlavor:  0
@@ -26,13 +26,13 @@
  * PersistLinkCacheDepth:  128
  *
  * Component Name:  LineTracer
- * MaxObjExtent:  20
+ * MaxObjExtent:  10
  * MaxRelExtent:  0
  * MaxSelectExtent:  0
- * MaxSelfEvents:  1
+ * MaxSelfEvents:  0
  * MaxNonSelfEvents:  1
  * MaxPriorityEvents:  0
- * MaxTimers:  1
+ * MaxTimers:  0
  * InterleavedBridges:  0
  * PEIClassCount:  0
  * PersistentClassCount:  0
@@ -81,10 +81,10 @@ typedef unsigned char bool;
 #define ESCHER_SYS_MAX_ASSOCIATION_EXTENT 0
 #define ESCHER_SYS_MAX_TRANSIENT_EXTENT 0
 #define SYS_MAX_CONTAINERS ( ESCHER_SYS_MAX_ASSOCIATION_EXTENT + ESCHER_SYS_MAX_TRANSIENT_EXTENT )
-#define ESCHER_SYS_MAX_SELF_EVENTS 2
+#define ESCHER_SYS_MAX_SELF_EVENTS 0
 #define ESCHER_SYS_MAX_NONSELF_EVENTS 2
 #define ESCHER_SYS_MAX_XTUML_EVENTS ( ESCHER_SYS_MAX_SELF_EVENTS + ESCHER_SYS_MAX_NONSELF_EVENTS )
-#define ESCHER_SYS_MAX_XTUML_TIMERS 2
+#define ESCHER_SYS_MAX_XTUML_TIMERS 0
 #define ESCHER_SYS_MAX_INTERLEAVED_BRIDGES 0
 #define ESCHER_SYS_MAX_INTERLEAVED_BRIDGE_DATA 8
 
@@ -298,7 +298,6 @@ void Escher_thread_shutdown( void );
 #define pthread_mutex_lock( X ) 0
 #define pthread_mutex_unlock( X ) 0
 #endif
-#include "TIM_bridge.h"
 
 
 

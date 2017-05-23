@@ -437,7 +437,6 @@ typedef struct {
 /* Pointer to head of list of available event nodes.  */
 static Escher_xtUMLEvent_t * free_event_list = 0;
 static xtUMLEventQueue_t non_self_event_queue[ NUM_OF_XTUML_CLASS_THREADS ];
-static xtUMLEventQueue_t self_event_queue[ NUM_OF_XTUML_CLASS_THREADS ];
 
 /*
  * Link the event skeleton nodes together on the free list ready
@@ -451,7 +450,6 @@ InitializeOoaEventPool( void )
   u2_t i;
   Escher_run_flag = true; /* Default running enabled.  */
   non_self_event_queue[ 0 ].head = 0; non_self_event_queue[ 0 ].tail = 0;
-  self_event_queue[ 0 ].head = 0; self_event_queue[ 0 ].tail = 0;
   /* String events together into a singly linked list. */
   free_event_list = (Escher_xtUMLEvent_t *) &Escher_xtUML_event_pool[ 0 ];
   for ( i = 0; i < ESCHER_SYS_MAX_XTUML_EVENTS - 1; i++ ) {
@@ -571,52 +569,6 @@ static Escher_xtUMLEvent_t * DequeueOoaNonSelfEvent( void )
   }
   return event;
 }
-
-/*
- * Send an event on the self queue.  No prioritization occurs on
- * this queue.
- */
-void
-Escher_SendSelfEvent( Escher_xtUMLEvent_t * event )
-{
-  xtUMLEventQueue_t * q = &self_event_queue[ 0 ];
-  event->next = 0;
-  /* Append the event to the tail end of the queue.  */
-  /* No need to maintain prev pointers for self directed events.  */
-  if ( q->tail == 0 ) {
-    q->head = event;
-  } else {
-    q->tail->next = event;
-  }
-  q->tail = event;
-}
-
-/*
- * Drag an event from the self queue if there is one.  This routine
- * also serves as the IsQueueEmpty routine.  A null return code 
- * indicates that the queue is empty.  Otherwise the handle to the
- * event will be returned.
- */
-static Escher_xtUMLEvent_t * DequeueOoaSelfEvent( void );
-static Escher_xtUMLEvent_t * DequeueOoaSelfEvent( void )
-{
-  Escher_xtUMLEvent_t * event;
-  xtUMLEventQueue_t * q = &self_event_queue[ 0 ];
-  /* Assign the event from the head of the queue.  */
-  event = q->head;
-  /* If the list is not empty, bump the head.  */
-  if ( event != 0 ) {
-    q->head = event->next;               /* bump */
-    /* If empty, nullify tail.  No need to maintain prev pointers
-       for the self queue.  They are not used.  */
-    if ( q->head == 0 ) {
-      q->tail = 0;
-    }
-  } else {
-    UserSelfEventQueueEmptyCallout();
-  }
-  return event;
-}
 /*
  * Loop on the event queues dispatching events for this thread.
  */
@@ -632,10 +584,7 @@ static void ooa_loop( void )
   Escher_xtUMLEvent_t * event;
   /* Start consuming events and dispatching background processes.  */
   while ( true == Escher_run_flag ) {
-    event = DequeueOoaSelfEvent(); /* Self first.  */
-    if ( 0 == event ) {
-      event = DequeueOoaNonSelfEvent(); /* Instance next.  */
-    }
+    event = DequeueOoaNonSelfEvent(); /* Instance next.  */
     if ( 0 != event ) {
       ( *( DomainClassDispatcherTable[ GetEventDestDomainNumber( event ) ] )[ GetEventDestObjectNumber( event ) ] )( event );
       Escher_DeletextUMLEvent( event );

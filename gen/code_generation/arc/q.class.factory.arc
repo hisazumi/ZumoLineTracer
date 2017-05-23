@@ -82,14 +82,7 @@ ${te_class.GeneratedName}_instanceloader( ${te_instance.handle} instance, const 
   ${te_prefix.type}UniqueID_t return_identifier = 0;
   ${te_class.GeneratedName} * ${te_instance.self} = (${te_class.GeneratedName} *) instance;
   /* Initialize application analysis class attributes.  */
-    .select any te_attr related by te_class->TE_ATTR[R2061]
-    .while ( not_empty te_attr )
-      .select one prev_te_attr related by te_attr->TE_ATTR[R2087.'precedes']
-      .if ( empty prev_te_attr )
-        .break while
-      .end if
-      .assign te_attr = prev_te_attr
-    .end while
+    .select any te_attr related by te_class->TE_ATTR[R2061] where ( selected.prevID == 00 )
     .assign attribute_number = 1
     .while ( not_empty te_attr )
       .select one o_attr related by te_attr->O_ATTR[R2033]
@@ -238,14 +231,7 @@ void ${te_class.GeneratedName}_batch_relate( ${te_instance.handle} instance )
           .assign param_list = ""
           .assign delimeter = ""
           .assign nonreferential = false
-          .select any te_attr related by part_te_class->TE_ATTR[R2061]
-          .while ( not_empty te_attr )
-            .select one prev_te_attr related by te_attr->TE_ATTR[R2087.'precedes']
-            .if ( empty prev_te_attr )
-              .break while
-            .end if
-            .assign te_attr = prev_te_attr
-          .end while
+          .select any te_attr related by part_te_class->TE_ATTR[R2061] where ( selected.prevID == 00 )
           .while ( not_empty te_attr )
             .select one current_o_attr related by te_attr->O_ATTR[R2033]
             .for each o_rtida in o_rtidas

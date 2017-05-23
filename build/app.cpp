@@ -17,6 +17,7 @@
 Zumo zumo;
 Serial pc(USBTX, USBRX);
 DigitalIn pushButton(D12);
+DigitalIn sw0(USER_BUTTON0);
 
 #define LENGTH(ary) (sizeof(ary)/sizeof(ary[0]))
 
@@ -35,7 +36,7 @@ static void init () {
     // hit
     int i;
     for (i=0 ; i<LENGTH(xs) ; i++) {
-        xs[i] = 150;
+        xs[i] = 0;
     }
 
     // ir
@@ -52,12 +53,10 @@ static void detect_hit () {
     xs[current++] = x;
 
     if (current >= LENGTH(xs)) {
-        syslog (LOG_NOTICE, "acc: %d %d %d", x, y, z);
         current = 0;
     }
 
-    if (average (xs, LENGTH(xs)) < -500) {
-        syslog (LOG_NOTICE, "hit!");
+    if (average (xs, LENGTH(xs)) < -1000) {
         LineTracer_bumper();
     }
 }
@@ -83,8 +82,21 @@ static void detect_button () {
     int current = pushButton;
     if (current != previous) {
       previous = current;
-      syslog (LOG_NOTICE, "pushed");
-      LineTracer_pushed ();
+      if (current == 0) {
+        LineTracer_pushed ();
+      }
+    }
+}
+
+static void detect_sw0 () {
+    static int previous = 1;
+
+    int current = sw0;
+    if (current != previous) {
+      previous = current;
+      if (current == 0) {
+        LineTracer_sw0 ();
+      }
     }
 }
 
@@ -96,6 +108,7 @@ void task_sensing(intptr_t exinf) {
     detect_ir ();
     detect_hit ();
     detect_button ();
+    detect_sw0 ();
     dly_tsk(100);
   }
 }

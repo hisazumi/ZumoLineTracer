@@ -1,4 +1,0 @@
-.invoke MarkInitializationFunction( "*", "setup" )
-.invoke MarkStateTransitionTracingOn( "*" )
-.invoke MarkActionStatementTracingOn( "*" )
-.invoke MarkEmptyHandleDetectionOn( "*" )

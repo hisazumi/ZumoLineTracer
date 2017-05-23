@@ -14,7 +14,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'Zumo::driveTank(left: 100, right: 0);
+	'Zumo::driveTank(left: 150, right: 0);
 ',
 	1,
 	'',
@@ -27,7 +27,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'Zumo::driveTank(left: 0, right: 100);
+	'Zumo::driveTank(left: 0, right: 150);
 ',
 	1,
 	'',

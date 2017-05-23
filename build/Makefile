@@ -13,7 +13,7 @@ APPLNAME = app
 USE_CXX = true
 APPL_CFG = $(APPLNAME).cfg
 USE_TRUESTUDIO = false
-C_OBJ += TIM_bridge.o ../src/sys_xtuml.o ../src/LineTracer_LineTracer_class.o ../src/LineTracer_Button_class.o ../src/LineTracer.o ../src/sys_user_co.o
+C_OBJ += TIM_bridge.o ../src/sys_xtuml.o ../src/LineTracer_LineTracer_class.o ../src/LineTracer.o ../src/sys_user_co.o
 CXX_OBJ += Zumo_bridge.o
 INCLUDE_PATHS += -I../src
 

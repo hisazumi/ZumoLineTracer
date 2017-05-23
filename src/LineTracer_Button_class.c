@@ -8,7 +8,6 @@
  *--------------------------------------------------------------------------*/
 
 #include "ZumoLineTracer_sys_types.h"
-#include "TIM_bridge.h"
 #include "Zumo_bridge.h"
 #include "LineTracer_classes.h"
 
@@ -40,13 +39,6 @@ static void LineTracer_Button_act1( LineTracer_Button *, const Escher_xtUMLEvent
 static void
 LineTracer_Button_act1( LineTracer_Button * self, const Escher_xtUMLEvent_t * const event )
 {
-  Escher_Timer_t * timer;Escher_xtUMLEvent_t * ev;
-  /* CREATE EVENT INSTANCE ev(  ) TO self */
-  XTUML_OAL_STMT_TRACE( 1, "CREATE EVENT INSTANCE ev(  ) TO self" );
-  ev = Escher_NewxtUMLEvent( (void *) self, &LineTracer_Buttonevent1c );
-  /* ASSIGN timer = TIM::timer_start_recurring(event_inst:ev, microseconds:10000000) */
-  XTUML_OAL_STMT_TRACE( 1, "ASSIGN timer = TIM::timer_start_recurring(event_inst:ev, microseconds:10000000)" );
-  timer = TIM_timer_start_recurring( (Escher_xtUMLEvent_t *)ev, 10000000 );
 }
 
 /*
@@ -58,12 +50,8 @@ LineTracer_Button_act2( LineTracer_Button * self, const Escher_xtUMLEvent_t * co
 {
 }
 
-const Escher_xtUMLEventConstant_t LineTracer_Buttonevent1c = {
-  LineTracer_DOMAIN_ID, LineTracer_Button_CLASS_NUMBER, LINETRACER_BUTTONEVENT1NUM,
-  ESCHER_IS_INSTANCE_EVENT };
-const Escher_xtUMLEventConstant_t LineTracer_Buttonevent2c = {
-  LineTracer_DOMAIN_ID, LineTracer_Button_CLASS_NUMBER, LINETRACER_BUTTONEVENT2NUM,
-  ESCHER_IS_INSTANCE_EVENT };
+
+
 
 
 /*
@@ -72,13 +60,13 @@ const Escher_xtUMLEventConstant_t LineTracer_Buttonevent2c = {
  * Row zero is the uninitialized state (e.g., for creation event transitions).
  * Column index is (MC enumerated) state machine events.
  */
-static const Escher_SEMcell_t LineTracer_Button_StateEventMatrix[ 2 + 1 ][ 2 ] = {
+static const Escher_SEMcell_t LineTracer_Button_StateEventMatrix[ 2 + 1 ][ 0 ] = {
   /* row 0:  uninitialized state (for creation events) */
-  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
+  {  },
   /* row 1:  LineTracer_Button_STATE_1 (init) */
-  { LineTracer_Button_STATE_2, LineTracer_Button_STATE_1 },
+  {  },
   /* row 2:  LineTracer_Button_STATE_2 (fire) */
-  { LineTracer_Button_STATE_2, EVENT_CANT_HAPPEN }
+  {  }
 };
 
   /*

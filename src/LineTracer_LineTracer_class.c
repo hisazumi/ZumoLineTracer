@@ -8,7 +8,6 @@
  *--------------------------------------------------------------------------*/
 
 #include "ZumoLineTracer_sys_types.h"
-#include "TIM_bridge.h"
 #include "Zumo_bridge.h"
 #include "LineTracer_classes.h"
 
@@ -108,6 +107,15 @@ LineTracer_LineTracer_act3( LineTracer_LineTracer * self, const Escher_xtUMLEven
   LineTracer_LineTracer_op_turn_right( self );
 }
 
+/*
+ * State 4:  [cargo_loaded]
+ */
+static void LineTracer_LineTracer_act4( LineTracer_LineTracer *, const Escher_xtUMLEvent_t * const );
+static void
+LineTracer_LineTracer_act4( LineTracer_LineTracer * self, const Escher_xtUMLEvent_t * const event )
+{
+}
+
 
 const Escher_xtUMLEventConstant_t LineTracer_LineTracerevent2c = {
   LineTracer_DOMAIN_ID, LineTracer_LineTracer_CLASS_NUMBER, LINETRACER_LINETRACEREVENT2NUM,
@@ -121,6 +129,9 @@ const Escher_xtUMLEventConstant_t LineTracer_LineTracerevent4c = {
 const Escher_xtUMLEventConstant_t LineTracer_LineTracerevent5c = {
   LineTracer_DOMAIN_ID, LineTracer_LineTracer_CLASS_NUMBER, LINETRACER_LINETRACEREVENT5NUM,
   ESCHER_IS_INSTANCE_EVENT };
+const Escher_xtUMLEventConstant_t LineTracer_LineTracerevent6c = {
+  LineTracer_DOMAIN_ID, LineTracer_LineTracer_CLASS_NUMBER, LINETRACER_LINETRACEREVENT6NUM,
+  ESCHER_IS_INSTANCE_EVENT };
 
 
 /*
@@ -129,37 +140,41 @@ const Escher_xtUMLEventConstant_t LineTracer_LineTracerevent5c = {
  * Row zero is the uninitialized state (e.g., for creation event transitions).
  * Column index is (MC enumerated) state machine events.
  */
-static const Escher_SEMcell_t LineTracer_LineTracer_StateEventMatrix[ 3 + 1 ][ 4 ] = {
+static const Escher_SEMcell_t LineTracer_LineTracer_StateEventMatrix[ 4 + 1 ][ 5 ] = {
   /* row 0:  uninitialized state (for creation events) */
-  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
+  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 1:  LineTracer_LineTracer_STATE_1 (init) */
-  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_3 },
+  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_4 },
   /* row 2:  LineTracer_LineTracer_STATE_2 (online) */
-  { EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_3, LineTracer_LineTracer_STATE_1, EVENT_CANT_HAPPEN },
+  { EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_3, LineTracer_LineTracer_STATE_1, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
   /* row 3:  LineTracer_LineTracer_STATE_3 (offline) */
-  { LineTracer_LineTracer_STATE_2, EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_1, EVENT_CANT_HAPPEN }
+  { LineTracer_LineTracer_STATE_2, EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_1, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN },
+  /* row 4:  LineTracer_LineTracer_STATE_4 (cargo_loaded) */
+  { EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, EVENT_CANT_HAPPEN, LineTracer_LineTracer_STATE_3, EVENT_CANT_HAPPEN }
 };
 
   /*
    * Array of pointers to the class state action procedures.
    * Index is the (MC enumerated) number of the state action to execute.
    */
-  static const StateAction_t LineTracer_LineTracer_acts[ 4 ] = {
+  static const StateAction_t LineTracer_LineTracer_acts[ 5 ] = {
     (StateAction_t) 0,
     (StateAction_t) LineTracer_LineTracer_act1,  /* init */
     (StateAction_t) LineTracer_LineTracer_act2,  /* online */
-    (StateAction_t) LineTracer_LineTracer_act3  /* offline */
+    (StateAction_t) LineTracer_LineTracer_act3,  /* offline */
+    (StateAction_t) LineTracer_LineTracer_act4  /* cargo_loaded */
   };
 
   /*
    * Array of string names of the state machine names.
    * Index is the (MC enumerated) number of the state.
    */
-  static const c_t * const state_name_strings[ 4 ] = {
+  static const c_t * const state_name_strings[ 5 ] = {
     "",
     "init",
     "online",
-    "offline"
+    "offline",
+    "cargo_loaded"
   };
 
 /*
@@ -174,12 +189,12 @@ LineTracer_LineTracer_Dispatch( Escher_xtUMLEvent_t * event )
   Escher_StateNumber_t next_state;
   if ( 0 != instance ) {
     current_state = instance->current_state;
-    if ( current_state > 3 ) {
+    if ( current_state > 4 ) {
       /* instance validation failure (object deleted while event in flight) */
       UserEventNoInstanceCallout( event_number );
     } else {
       next_state = LineTracer_LineTracer_StateEventMatrix[ current_state ][ event_number ];
-      if ( next_state <= 3 ) {
+      if ( next_state <= 4 ) {
         STATE_TXN_START_TRACE( "LineTracer", current_state, state_name_strings[ current_state ] );
         /* Execute the state action and update the current state.  */
         ( *LineTracer_LineTracer_acts[ next_state ] )( instance, event );

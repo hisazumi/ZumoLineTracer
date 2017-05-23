@@ -139,7 +139,9 @@
         .//
         .// Object ${te_class.Name} (${te_class.Key_Lett}) Identifier *${key_number}
         .create object instance te_swc of TE_SWC
-        .relate te_swc to te_class across R2001
+        .// relate te_swc to te_class across R2001;
+        .assign te_swc.GeneratedName = te_class.GeneratedName
+        .// end relate
         .assign te_swc.Obj_Kl = te_class.Key_Lett
         .assign te_swc.Where_Spec = where_spec
         .assign te_swc.Key = where_key
@@ -170,7 +172,9 @@
         .//
         .// Object ${te_class.Name} (${te_class.Key_Lett}) Identifier *${key_number}
         .create object instance te_swc of TE_SWC
-        .relate te_swc to te_class across R2001
+        .// relate te_swc to te_class across R2001;
+        .assign te_swc.GeneratedName = te_class.GeneratedName
+        .// end relate
         .assign te_swc.Obj_Kl = te_class.Key_Lett
         .assign te_swc.Where_Spec = where_spec
         .assign te_swc.Key = where_key
@@ -202,7 +206,9 @@
           .//
           .// Object ${te_class.Name} (${te_class.Key_Lett}) Identifier *${key_number}
           .create object instance te_swc of TE_SWC
-          .relate te_swc to te_class across R2001
+          .// relate te_swc to te_class across R2001;
+          .assign te_swc.GeneratedName = te_class.GeneratedName
+          .// end relate
           .assign te_swc.Obj_Kl = te_class.Key_Lett
           .assign te_swc.Where_Spec = where_spec
           .assign te_swc.Key = where_key
@@ -230,7 +236,9 @@
           .//
           .// Object ${te_class.Name} (${te_class.Key_Lett}) Identifier *${key_number}
           .create object instance te_swc of TE_SWC
-          .relate te_swc to te_class across R2001
+          .// relate te_swc to te_class across R2001;
+          .assign te_swc.GeneratedName = te_class.GeneratedName
+          .// end relate
           .assign te_swc.Obj_Kl = te_class.Key_Lett
           .assign te_swc.Where_Spec = where_spec
           .assign te_swc.Key = where_key

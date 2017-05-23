@@ -10,7 +10,6 @@
  *--------------------------------------------------------------------------*/
 
 #include "ZumoLineTracer_sys_types.h"
-#include "TIM_bridge.h"
 #include "Zumo_bridge.h"
 #include "Zumo_bridge.h"
 #include "ZumoLineTracer_sys_types.h"
